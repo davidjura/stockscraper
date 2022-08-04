@@ -70,20 +70,20 @@ def main():
 
 
     
-    # try:
-    result = scrape(
-        symbol=symbol,
-        start_date=start_date,
-        end_date=end_date,
-        days=days,
-        interval=interval,
-        datasource=datasource,
-    )
-    with open(output_file, "w") as out:
-        out.write(result.as_csv if format.lower() == "csv" else result.as_json)
-    # except Exception as e:
-    #     print(e)
-    #     sys.exit(1)
+    try:
+        result = scrape(
+            symbol=symbol,
+            start_date=start_date,
+            end_date=end_date,
+            days=days,
+            interval=interval,
+            datasource=datasource,
+        )
+        with open(output_file, "w") as out:
+            out.write(result.as_csv if format.lower() == "csv" else result.as_json)
+    except Exception as e:
+        print(e)
+        sys.exit(1)
 
 if __name__ == "__main__":
     main()
